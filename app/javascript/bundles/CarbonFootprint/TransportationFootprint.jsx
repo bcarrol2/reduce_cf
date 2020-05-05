@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import '../../../assets/stylesheets/transportation_footprint.scss';
 
 export default class TransportationFootprint extends React.Component {
   static propTypes = {
@@ -43,8 +44,10 @@ export default class TransportationFootprint extends React.Component {
           metric_ton_carbon_dioxide_output
       }
 
-      if (miles_driven_per_year === 0 || mpg === 0 || metric_ton_carbon_dioxide_output === 0)
-      return;
+      if (miles_driven_per_year === 0 || mpg === 0 || metric_ton_carbon_dioxide_output === 0) {
+          alert('You must submit a number')
+      }
+      ;
 
       fetch(url, {
         method: 'POST',
@@ -67,8 +70,8 @@ export default class TransportationFootprint extends React.Component {
           Hello, {this.state.user}!
         </h3>
         <hr />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="miles_driven_per_year">
+        <form onSubmit={this.handleSubmit} className="transportation-footprint-form">
+          <label htmlFor="miles_driven_per_year" className="transportationFormText">
             About how many miles do you drive a year?
           </label>
           <input
@@ -79,7 +82,7 @@ export default class TransportationFootprint extends React.Component {
             onChange={(event) => this.handleChange(event)}
           />
           <br />
-          <label htmlFor="mpg">
+          <label htmlFor="mpg" className="transportationFormText">
             How many miles per gallon does your car get?
           </label>
           <input
@@ -90,7 +93,7 @@ export default class TransportationFootprint extends React.Component {
             onChange={(event) => this.handleChange(event)}
           />
           <br />
-          <label htmlFor="metric_ton_carbon_dioxide_output">
+          <label htmlFor="metric_ton_carbon_dioxide_output" className="transportationFormText">
             Your yearly carbon footprint from driving in metric tons: 
           </label>
           <input
@@ -103,8 +106,16 @@ export default class TransportationFootprint extends React.Component {
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>
         <hr />
-        A metric ton is 2,205 lbs.
+        One metric ton is 2,205 lbs.
         There are over 220 million issued drivers licenses in the United States.
+        Imagine each driver releasing tons of carbon dioxide into the atmosphere.
+        Of course we need to try and drive less, but if we cannot there are some combative solutions.
+        One possible solution is to plant more trees.
+        "When a tree breathes, it inhales carbon dioxide and exhales oxygen - the exact opposite of humans. 
+        As a tree matures, it can consume 48 pounds of carbon dioxide per year"
+        <br />
+        <br />
+        - Just something to think about
       </div>
     );
   }

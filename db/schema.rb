@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_075811) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "miles_driven_per_year"
-    t.decimal "metric_ton_carbon_dioxide_output"
+    t.float "metric_ton_carbon_dioxide_output"
     t.index ["user_id"], name: "index_transportation_footprints_on_user_id"
   end
 

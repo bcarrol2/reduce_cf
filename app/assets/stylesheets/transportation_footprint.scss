@@ -1,3 +1,106 @@
 // Place all the styles related to the TransportationFootprint controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+body {
+    background-color: darkseagreen;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cleverlyText {
+    // color: white;
+    text-align: center;
+}
+
+// .accountText {
+//     color: white;
+// }
+
+#login-page {
+    background-color: blue;
+}
+
+.loginForm {
+    font-family: 'Segoe UI';
+    position: absolute;
+    border-radius: 5%;
+    top: 50%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 300px;
+    text-align: center;
+}
+
+.loginForm p {
+    font-size: 20px;
+}
+
+.loginForm a {
+    font-size: 15px;
+}
+
+.bottomLoginForm {
+    padding: 15px;
+    font-size: 20px;
+}
+
+.loginButton {
+    border-radius: 0px;
+    width: 50%;
+    height: 40px;
+    background-color: seagreen;
+    margin: 10px;
+    color: white;
+    font-size: 15px;
+}
+
+.transportation-footprint-form input {
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
+    margin: 10px;
+    background-color: rgb(183, 247, 183);
+    border: none;
+}
+
+input#user_email {
+    width: 100%;
+    height: 35px;
+    font-size: 17px;
+    margin: 10px;
+    background-color: rgb(183, 247, 183);
+    border: none;
+}
+
+input#user_password {
+    width: 100%;
+    height: 35px;
+    font-size: 17px;
+    margin: 10px;
+    background-color: rgb(183, 247, 183);
+    border: none;
+}
+
+input#user_password_confirmation {
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+    margin: 10px;
+    background-color: rgb(183, 247, 183);
+    border: none;
+}
+
+.transportationFormText {
+    font-size: 18px;
+}
+
+.saveButton {
+    border-radius: 0px;
+    width: 80px;
+    height: 40px;
+    background-color: seagreen;
+    margin: 10px;
+    color: white;
+    font-size: 15px;
+}

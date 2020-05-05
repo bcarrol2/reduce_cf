@@ -1,0 +1,7 @@
+<% if @user %>
+    <ul>
+        <% @user.transportation_footprints.each do |tf| %>
+            <li><%= tf.metric_ton_carbon_dioxide_output %></li>
+        <% end %>
+    </ul>
+<% end %>

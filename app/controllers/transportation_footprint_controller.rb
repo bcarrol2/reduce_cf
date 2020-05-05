@@ -9,7 +9,11 @@ class TransportationFootprintController < ApplicationController
 
     def save_transportation_footprint
         new_carbon_footprint = TransportationFootprint.create!(transportation_footprint_params)
-        render json: { carbon_footprint: new_carbon_footprint }
+        if new_carbon_footprint
+            render json: new_carbon_footprint
+        else
+            render json: new_carbon_footprint.errors
+        end
     end
 
     private

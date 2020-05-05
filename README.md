@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cleverly Carbon Footprint Calculator
 
-Things you may want to cover:
+Primary objective - calculates drivers CO2 yearly output.
 
-* Ruby version
+##### Steps to run #####
+1. Clone down
+2. Bundle install
+3. Migrate and seed the database after making sure its created with `rails db:create`, `rails db:migrate`, `rails db:seed`
+4. Then type `rails s` into terminal and navigate to localhost://3000 in your browser
+5. Enjoy
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+***Later features soon to come:
+Dockerize
+Carbon dioxide footprint calculations for water, eletricity, and eating
+Styling

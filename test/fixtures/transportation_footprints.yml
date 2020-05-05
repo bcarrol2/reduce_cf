@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  miles: 1
+  mpg: 1
+  cdo: 1
+  user: one
+
+two:
+  miles: 1
+  mpg: 1
+  cdo: 1
+  user: two

@@ -11,6 +11,10 @@ Primary objective - calculates drivers CO2 yearly output.
 4. Then type `rails s` into terminal and navigate to localhost://3000 in your browser
 5. Enjoy
 
+##### Signup or Login #####
+email: 123@example.com
+password: password
+
 ***Later features soon to come:
 Dockerize
 Carbon dioxide footprint calculations for water, eletricity, and eating

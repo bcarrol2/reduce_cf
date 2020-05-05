@@ -24,13 +24,15 @@ export default class TransportationFootprint extends React.Component {
   }
 
   handleChange = (event) => {
-      let userMile = event.target.name === "miles_driven_per_year" ? 
+      let userMiles = event.target.name === "miles_driven_per_year" ? 
         event.target.value / this.state.mpg : 
         this.state.miles_driven_per_year / event.target.value
-      let userMetricTonFootprint = userMile * 8887 / 1000000
+      let gramsOfCarbonPerGallon = 8887;
+      let gramsToMetricTon = 1000000;
+      let userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
       this.setState({
           [event.target.name]: event.target.value,
-          metric_ton_carbon_dioxide_output: userMetricTonFootprint == Infinity || NaN ? 0 : userMetricTonFootprint
+          metric_ton_carbon_dioxide_output: userMetricTonFootprint == Infinity ? 0 : userMetricTonFootprint
       })
   };
 

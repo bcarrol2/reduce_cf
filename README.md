@@ -12,7 +12,7 @@ Primary objective - calculates drivers CO2 yearly output.
 5. Enjoy
 
 ##### Signup or Login #####
-email: 123@example.com
+email: 123@test.com
 password: password
 
 ***Later features soon to come:

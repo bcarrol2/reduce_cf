@@ -25,8 +25,6 @@ export default class TransportationFootprint extends React.Component {
   }
 
   calculateFootprint = (event) => {
-
-
     let userMiles = event.target.name === "miles_driven_per_year" ? 
     event.target.value / this.state.mpg : 
     this.state.miles_driven_per_year / event.target.value
@@ -73,7 +71,7 @@ export default class TransportationFootprint extends React.Component {
     return (
       <div>
         <h3>
-          Hello, {this.state.user}!
+          Hello, {this.state.user}
         </h3>
         <hr />
         <form onSubmit={this.handleSubmit} className="transportation-footprint-form">
@@ -110,7 +108,7 @@ export default class TransportationFootprint extends React.Component {
           />
           <br />
           <label>
-              Is your vehicle diesel?
+            Is your vehicle diesel?
           </label>
           <input type="checkbox" id="diesel-radio-button" />
           <br />

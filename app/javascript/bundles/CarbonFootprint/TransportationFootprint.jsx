@@ -19,50 +19,54 @@ export default class TransportationFootprint extends React.Component {
         user_id: this.props.user_id,
         miles_driven_per_year: 0,
         mpg: 0,
-        metric_ton_carbon_dioxide_output: 0
+        metric_ton_carbon_dioxide_output: 0,
+        diesel: false
     };
   }
 
-  handleChange = (event) => {
-      let userMiles = event.target.name === "miles_driven_per_year" ? 
-        event.target.value / this.state.mpg : 
-        this.state.miles_driven_per_year / event.target.value
-      const gramsOfCarbonPerGallon = 8887;
-      const gramsToMetricTon = 1000000;
-      let userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
-      this.setState({
-          [event.target.name]: event.target.value,
-          metric_ton_carbon_dioxide_output: isNaN(userMetricTonFootprint) || userMetricTonFootprint == Infinity ? 0 : userMetricTonFootprint
-      })
+  calculateFootprint = (event) => {
+
+
+    let userMiles = event.target.name === "miles_driven_per_year" ? 
+    event.target.value / this.state.mpg : 
+    this.state.miles_driven_per_year / event.target.value
+    const gramsOfCarbonPerGallon = 8887;
+    const gramsofCarbonPerDieselGallon = 10180;
+    const gramsToMetricTon = 1000000;
+    let userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
+    
+    this.setState({
+        [event.target.name]: event.target.value,
+        metric_ton_carbon_dioxide_output: isNaN(userMetricTonFootprint) || userMetricTonFootprint == Infinity ? 0 : userMetricTonFootprint
+    })
   };
 
   handleSubmit = () => {
-      const url = "http://localhost:3000/transportation_footprint"
-      const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, user_id } = this.state;
-      const body = {
-          user_id,
-          miles_driven_per_year,
-          mpg,
-          metric_ton_carbon_dioxide_output
-      }
+    const url = "http://localhost:3000/transportation_footprint"
+    const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, user_id } = this.state;
+    const body = {
+        user_id,
+        miles_driven_per_year,
+        mpg,
+        metric_ton_carbon_dioxide_output
+    }
 
-      if (miles_driven_per_year === 0 || mpg === 0 || metric_ton_carbon_dioxide_output === 0) {
-          alert('You must submit a number')
-      }
-      ;
+    if (miles_driven_per_year === 0 || mpg === 0 || metric_ton_carbon_dioxide_output === 0) {
+        alert('You must submit a number')
+    };
 
-      fetch(url, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(body)
-      })
-      .then(response => {
-          return response.json();
-      })
-      .then(window.location.href = "/")
-      .catch(error => console.log(error.message));
+    fetch(url, {
+    method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(window.location.href = "/")
+    .catch(error => console.log(error.message));
   }
 
   render() {
@@ -81,7 +85,7 @@ export default class TransportationFootprint extends React.Component {
             type="number"
             name="miles_driven_per_year"
             value={this.state.miles_driven_per_year}
-            onChange={(event) => this.handleChange(event)}
+            onChange={(event) => this.calculateFootprint(event)}
           />
           <br />
           <label htmlFor="mpg" className="transportationFormText">
@@ -92,7 +96,7 @@ export default class TransportationFootprint extends React.Component {
             type="number"
             name="mpg"
             value={this.state.mpg}
-            onChange={(event) => this.handleChange(event)}
+            onChange={(event) => this.calculateFootprint(event)}
           />
           <br />
           <label htmlFor="metric_ton_carbon_dioxide_output" className="transportationFormText">
@@ -104,6 +108,11 @@ export default class TransportationFootprint extends React.Component {
             name="metric_ton_carbon_dioxide_output"
             value={this.state.metric_ton_carbon_dioxide_output}
           />
+          <br />
+          <label>
+              Is your vehicle diesel?
+          </label>
+          <input type="checkbox" id="diesel-radio-button" />
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>

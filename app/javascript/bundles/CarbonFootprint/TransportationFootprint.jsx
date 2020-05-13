@@ -25,13 +25,20 @@ export default class TransportationFootprint extends React.Component {
   }
 
   calculateFootprint = (event) => {
+
     let userMiles = event.target.name === "miles_driven_per_year" ? 
     event.target.value / this.state.mpg : 
     this.state.miles_driven_per_year / event.target.value
     const gramsOfCarbonPerGallon = 8887;
-    const gramsofCarbonPerDieselGallon = 10180;
+    const gramsOfCarbonPerDieselGallon = 10180;
     const gramsToMetricTon = 1000000;
-    let userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
+    let userMetricTonFootprint;
+    
+    if (this.state.diesel == true) {
+      userMetricTonFootprint = userMiles * gramsOfCarbonPerDieselGallon / gramsToMetricTon
+    } else {
+      userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
+    };
     
     this.setState({
         [event.target.name]: event.target.value,

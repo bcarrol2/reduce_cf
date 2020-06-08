@@ -25,7 +25,7 @@ export default class TransportationFootprint extends React.Component {
   }
 
   calculateFootprint = (event) => {
-
+    console.log(this.state.diesel, 'true soon?')
     let userMiles = event.target.name === "miles_driven_per_year" ? 
     event.target.value / this.state.mpg : 
     this.state.miles_driven_per_year / event.target.value
@@ -117,13 +117,14 @@ export default class TransportationFootprint extends React.Component {
           <label>
             Is your vehicle diesel?
           </label>
-          <input type="checkbox" id="diesel-radio-button" />
+          <input type="checkbox" checked={this.state.diesel} id="diesel-radio-button" />
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>
         <hr />
         One metric ton is 2,205 lbs.
         There are over 220 million issued drivers licenses in the United States.
+        Roughly 3 percent of the cars sold in the U.S are diesel-powered.
         Imagine each driver releasing tons of carbon dioxide into the atmosphere.
         Of course we need to try and drive less, but if we cannot there are some combative solutions.
         One possible solution is to plant more trees.

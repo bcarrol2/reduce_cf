@@ -1,6 +1,6 @@
 # README
 
-Cleverly Carbon Footprint Calculator
+Carbon Footprint Calculator
 
 Primary objective - calculates drivers CO2 yearly output.
 

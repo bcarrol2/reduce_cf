@@ -78,7 +78,7 @@ export default class TransportationFootprint extends React.Component {
 
   dieselVehicle() {
     this.setState({
-      diesel: true
+      diesel: !this.state.diesel
     })
   }
 

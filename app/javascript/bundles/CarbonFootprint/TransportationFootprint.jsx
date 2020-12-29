@@ -22,6 +22,8 @@ export default class TransportationFootprint extends React.Component {
         metric_ton_carbon_dioxide_output: 0,
         diesel: false
     };
+
+    this.dieselVehicle = this.dieselVehicle.bind(this);
   }
 
   calculateFootprint = (event) => {
@@ -34,7 +36,7 @@ export default class TransportationFootprint extends React.Component {
     const gramsToMetricTon = 1000000;
     let userMetricTonFootprint;
     
-    if (this.state.diesel == true) {
+    if (this.state.diesel) {
       userMetricTonFootprint = userMiles * gramsOfCarbonPerDieselGallon / gramsToMetricTon
     } else {
       userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
@@ -72,6 +74,12 @@ export default class TransportationFootprint extends React.Component {
     })
     .then(window.location.href = "/")
     .catch(error => console.log(error.message));
+  }
+
+  dieselVehicle() {
+    this.setState({
+      diesel: true
+    })
   }
 
   render() {
@@ -117,7 +125,7 @@ export default class TransportationFootprint extends React.Component {
           <label>
             Is your vehicle diesel?
           </label>
-          <input type="checkbox" checked={this.state.diesel} id="diesel-radio-button" />
+          <input type="checkbox" checked={this.state.diesel} onClick={this.dieselVehicle} id="diesel-radio-button" />
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>

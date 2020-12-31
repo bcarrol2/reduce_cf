@@ -31,10 +31,6 @@ export default class TransportationFootprint extends React.Component {
     this.calculateFootprint = this.calculateFootprint.bind(this);
   }
 
-  // componentDidUpdate(){
-  //   this.calculateFootprint
-  // }
-
   calculateFootprint = (event) => {
     console.log(this.state.diesel, 'true soon?')
     let userMiles = event.target.name === "miles_driven_per_year" ? 

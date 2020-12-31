@@ -4,7 +4,9 @@ import '../../../assets/stylesheets/transportation_footprint.scss';
 
 export default class TransportationFootprint extends React.Component {
   static propTypes = {
-    user: PropTypes.string.isRequired, // these are passed from the Rails view
+    user_first_name: PropTypes.string.isRequired,
+    user_last_name: PropTypes.string.isRequired,
+    user_email: PropTypes.string.isRequired, // these are passed from the Rails view
     user_id: PropTypes.number.isRequired
   };
 
@@ -14,8 +16,10 @@ export default class TransportationFootprint extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
-        user: this.props.user,
+    this.state = {
+        user_first_name: this.props.user_first_name,
+        user_last_name: this.props.user_last_name,
+        user_email: this.props.user_email,
         user_id: this.props.user_id,
         miles_driven_per_year: 0,
         mpg: 0,
@@ -26,6 +30,10 @@ export default class TransportationFootprint extends React.Component {
     this.dieselVehicle = this.dieselVehicle.bind(this);
     this.calculateFootprint = this.calculateFootprint.bind(this);
   }
+
+  // componentDidUpdate(){
+  //   this.calculateFootprint
+  // }
 
   calculateFootprint = (event) => {
     console.log(this.state.diesel, 'true soon?')
@@ -87,7 +95,7 @@ export default class TransportationFootprint extends React.Component {
     return (
       <div>
         <h3>
-          Hello, {this.state.user}
+          Hello, {this.state.user_first_name}
         </h3>
         <hr />
         <form onSubmit={this.handleSubmit} className="transportation-footprint-form">

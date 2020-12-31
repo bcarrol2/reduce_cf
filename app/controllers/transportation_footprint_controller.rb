@@ -4,7 +4,12 @@ class TransportationFootprintController < ApplicationController
 
     def index
         @user = current_user
-        @user_props = { user: @user.email, user_id: @user.id }
+        @user_props = { 
+            user_first_name: @user.first_name,
+            user_last_name: @user.last_name,
+            user_email: @user.email,
+            user_id: @user.id 
+        }
     end
 
     def save_transportation_footprint

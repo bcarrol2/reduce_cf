@@ -32,7 +32,6 @@ export default class TransportationFootprint extends React.Component {
   }
 
   calculateFootprint = (event) => {
-    console.log(this.state.diesel, 'true soon?')
     let userMiles = event.target.name === "miles_driven_per_year" ? 
     event.target.value / this.state.mpg : 
     this.state.miles_driven_per_year / event.target.value

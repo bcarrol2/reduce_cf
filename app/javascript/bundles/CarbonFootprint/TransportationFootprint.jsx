@@ -98,7 +98,7 @@ export default class TransportationFootprint extends React.Component {
             About how many miles do you drive a year?
           </label>
           <input
-            id="miles_driven_per_year"
+            id="user-inputs"
             type="number"
             name="miles_driven_per_year"
             value={this.state.miles_driven_per_year}
@@ -109,7 +109,7 @@ export default class TransportationFootprint extends React.Component {
             How many miles per gallon does your car get?
           </label>
           <input
-            id="mpg"
+            id="user-inputs"
             type="number"
             name="mpg"
             value={this.state.mpg}
@@ -120,7 +120,7 @@ export default class TransportationFootprint extends React.Component {
             Your yearly carbon footprint from driving in metric tons: 
           </label>
           <input
-            id="metric_ton_carbon_dioxide_output"
+            id="user-inputs"
             disabled={true}
             name="metric_ton_carbon_dioxide_output"
             value={this.state.metric_ton_carbon_dioxide_output}

@@ -27,7 +27,7 @@ export default class TransportationFootprint extends React.Component {
         diesel: false
     };
 
-    this.dieselVehicle = this.dieselVehicle.bind(this);
+    this.isDieselVehicle = this.isDieselVehicle.bind(this);
     this.calculateFootprint = this.calculateFootprint.bind(this);
   }
 
@@ -92,7 +92,7 @@ export default class TransportationFootprint extends React.Component {
     .catch(error => console.log(error.message));
   }
 
-  dieselVehicle() {
+  isDieselVehicle() {
     this.setState({
       diesel: !this.state.diesel
     })
@@ -114,7 +114,7 @@ export default class TransportationFootprint extends React.Component {
             type="number"
             name="miles_driven_per_year"
             value={this.state.miles_driven_per_year}
-            onChange={(event) => this.calculateFootprint(event)}
+            onChange={(event) => this.setMilesDriven(event)}
           />
           <br />
           <label htmlFor="mpg" className="transportationFormText">
@@ -141,7 +141,7 @@ export default class TransportationFootprint extends React.Component {
           <label>
             Is your vehicle diesel?
           </label>
-          <input type="checkbox" checked={this.state.diesel} onClick={this.dieselVehicle} id="diesel-radio-button" />
+          <input type="checkbox" checked={this.state.diesel} onClick={this.isDieselVehicle} id="diesel-radio-button" />
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>

@@ -52,6 +52,18 @@ export default class TransportationFootprint extends React.Component {
     })
   };
 
+  setMilesDriven(event) {
+    this.setState({
+      miles_driven_per_year: event.target.value
+    })
+  };
+
+  setMPG(event){
+    this.setState({
+      mpg: event.target.value
+    })
+  };
+
   handleSubmit = () => {
     const url = "http://localhost:3000/transportation_footprint"
     const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, user_id } = this.state;
@@ -113,7 +125,7 @@ export default class TransportationFootprint extends React.Component {
             type="number"
             name="mpg"
             value={this.state.mpg}
-            onChange={(event) => this.calculateFootprint(event)}
+            onChange={(event) => this.setMPG(event)}
           />
           <br />
           <label htmlFor="metric_ton_carbon_dioxide_output" className="transportationFormText">

@@ -28,26 +28,33 @@ export default class TransportationFootprint extends React.Component {
     };
 
     this.isDieselVehicle = this.isDieselVehicle.bind(this);
-    this.calculateFootprint = this.calculateFootprint.bind(this);
+    // this.calculateFootprint = this.calculateFootprint.bind(this);
   }
 
-  calculateFootprint = (event) => {
-    let userMiles = event.target.name === "miles_driven_per_year" ? 
-    event.target.value / this.state.mpg : 
-    this.state.miles_driven_per_year / event.target.value
+  componentDidUpdate(prevProps, prevState){
+    if (
+        this.state.mpg !== prevState.mpg || 
+        this.state.miles_driven_per_year !== prevState.miles_driven_per_year ||
+        this.state.diesel !== prevState.diesel
+        ) {
+      this.calculateFootprint();
+    }
+  }
+
+  calculateFootprint() {
+    let vechicleMiles = this.state.miles_driven_per_year / this.state.mpg
     const gramsOfCarbonPerGallon = 8887;
     const gramsOfCarbonPerDieselGallon = 10180;
     const gramsToMetricTon = 1000000;
     let userMetricTonFootprint;
     
     if (this.state.diesel) {
-      userMetricTonFootprint = userMiles * gramsOfCarbonPerDieselGallon / gramsToMetricTon
+      userMetricTonFootprint = vechicleMiles * gramsOfCarbonPerDieselGallon / gramsToMetricTon
     } else {
-      userMetricTonFootprint = userMiles * gramsOfCarbonPerGallon / gramsToMetricTon
+      userMetricTonFootprint = vechicleMiles * gramsOfCarbonPerGallon / gramsToMetricTon
     };
     
     this.setState({
-        [event.target.name]: event.target.value,
         metric_ton_carbon_dioxide_output: isNaN(userMetricTonFootprint) || userMetricTonFootprint == Infinity ? 0 : userMetricTonFootprint
     })
   };

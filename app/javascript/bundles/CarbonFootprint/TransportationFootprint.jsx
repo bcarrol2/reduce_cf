@@ -32,10 +32,12 @@ export default class TransportationFootprint extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
+    let {miles_driven_per_year, mpg, diesel} = this.state;
+
     if (
-        this.state.mpg !== prevState.mpg || 
-        this.state.miles_driven_per_year !== prevState.miles_driven_per_year ||
-        this.state.diesel !== prevState.diesel
+        mpg !== prevState.mpg || 
+        miles_driven_per_year !== prevState.miles_driven_per_year ||
+        diesel !== prevState.diesel
         ) {
       this.calculateFootprint();
     }

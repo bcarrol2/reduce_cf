@@ -28,7 +28,6 @@ export default class TransportationFootprint extends React.Component {
     };
 
     this.isDieselVehicle = this.isDieselVehicle.bind(this);
-    // this.calculateFootprint = this.calculateFootprint.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState){

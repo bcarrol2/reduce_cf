@@ -28,7 +28,7 @@ export default class TransportationFootprint extends React.Component {
     };
 
     this.isDieselVehicle = this.isDieselVehicle.bind(this);
-  }
+  };
 
   componentDidUpdate(prevProps, prevState){
     let {miles_driven_per_year, mpg, diesel} = this.state;
@@ -40,7 +40,7 @@ export default class TransportationFootprint extends React.Component {
         ) {
       this.calculateFootprint();
     }
-  }
+  };
 
   calculateFootprint() {
     let {miles_driven_per_year, mpg, diesel} = this.state;
@@ -99,13 +99,13 @@ export default class TransportationFootprint extends React.Component {
     })
     .then(window.location.href = "/")
     .catch(error => console.log(error.message));
-  }
+  };
 
   isDieselVehicle() {
     this.setState({
       diesel: !this.state.diesel
     })
-  }
+  };
 
   render() {
     return (
@@ -169,4 +169,4 @@ export default class TransportationFootprint extends React.Component {
       </div>
     );
   }
-}
+};

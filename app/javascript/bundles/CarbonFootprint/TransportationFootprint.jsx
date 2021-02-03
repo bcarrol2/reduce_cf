@@ -108,10 +108,18 @@ export default class TransportationFootprint extends React.Component {
   };
 
   render() {
+    let { 
+      diesel,
+      miles_driven_per_year,
+      mpg,
+      metric_ton_carbon_dioxide_output,
+      user_first_name
+    } = this.state;
+    
     return (
       <div>
         <h3>
-          Hello, {this.state.user_first_name}
+          Hello, {user_first_name}
         </h3>
         <hr />
         <form onSubmit={this.handleSubmit} className="transportation-footprint-form">
@@ -122,7 +130,7 @@ export default class TransportationFootprint extends React.Component {
             id="user-inputs"
             type="number"
             name="miles_driven_per_year"
-            value={this.state.miles_driven_per_year}
+            value={miles_driven_per_year}
             onChange={(event) => this.setMilesDriven(event)}
           />
           <br />
@@ -133,7 +141,7 @@ export default class TransportationFootprint extends React.Component {
             id="user-inputs"
             type="number"
             name="mpg"
-            value={this.state.mpg}
+            value={mpg}
             onChange={(event) => this.setMPG(event)}
           />
           <br />
@@ -144,13 +152,13 @@ export default class TransportationFootprint extends React.Component {
             id="user-inputs"
             disabled={true}
             name="metric_ton_carbon_dioxide_output"
-            value={this.state.metric_ton_carbon_dioxide_output}
+            value={metric_ton_carbon_dioxide_output}
           />
           <br />
           <label>
             Is your vehicle diesel?
           </label>
-          <input type="checkbox" checked={this.state.diesel} onClick={this.isDieselVehicle} id="diesel-radio-button" />
+          <input type="checkbox" checked={diesel} onClick={this.isDieselVehicle} id="diesel-radio-button" />
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>

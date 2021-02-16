@@ -5,10 +5,10 @@ class TransportationFootprintController < ApplicationController
     def index
         @user = current_user
         user_props = { 
-            user_first_name: @user.first_name,
-            user_last_name: @user.last_name,
-            user_email: @user.email,
-            user_id: @user.id 
+            first_name: @user.first_name,
+            last_name: @user.last_name,
+            email: @user.email,
+            id: @user.id 
         }
     end
 

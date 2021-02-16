@@ -4,10 +4,10 @@ import '../../../assets/stylesheets/transportation_footprint.scss';
 
 export default class TransportationFootprint extends React.Component {
   static propTypes = {
-    user_first_name: PropTypes.string.isRequired,
-    user_last_name: PropTypes.string.isRequired,
-    user_email: PropTypes.string.isRequired, // these are passed from the Rails view
-    user_id: PropTypes.number.isRequired
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired, // these are passed from the Rails view
+    id: PropTypes.number.isRequired
   };
 
   /**
@@ -17,10 +17,10 @@ export default class TransportationFootprint extends React.Component {
     super(props);
 
     this.state = {
-        user_first_name: this.props.user_first_name,
-        user_last_name: this.props.user_last_name,
-        user_email: this.props.user_email,
-        user_id: this.props.user_id,
+        first_name: this.props.first_name,
+        last_name: this.props.last_name,
+        email: this.props.email,
+        id: this.props.id,
         miles_driven_per_year: 0,
         mpg: 0,
         metric_ton_carbon_dioxide_output: 0,
@@ -75,9 +75,9 @@ export default class TransportationFootprint extends React.Component {
 
   handleSubmit = () => {
     const url = "http://localhost:3000/transportation_footprint"
-    const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, user_id } = this.state;
+    const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, id } = this.state;
     const body = {
-        user_id,
+        id,
         miles_driven_per_year,
         mpg,
         metric_ton_carbon_dioxide_output
@@ -113,13 +113,13 @@ export default class TransportationFootprint extends React.Component {
       miles_driven_per_year,
       mpg,
       metric_ton_carbon_dioxide_output,
-      user_first_name
+      first_name
     } = this.state;
-    
+
     return (
       <div>
         <h3>
-          Hello, {user_first_name}
+          Hello, {first_name}
         </h3>
         <hr />
         <form onSubmit={this.handleSubmit} className="transportation-footprint-form">

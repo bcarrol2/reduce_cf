@@ -43,7 +43,7 @@ export default class TransportationFootprint extends React.Component {
   };
 
   calculateFootprint() {
-    let {miles_driven_per_year, mpg, diesel} = this.state;
+    let { miles_driven_per_year, mpg, diesel } = this.state;
     let vechicleMiles = miles_driven_per_year / mpg
     const gramsOfCarbonPerGallon = 8887;
     const gramsOfCarbonPerDieselGallon = 10180;

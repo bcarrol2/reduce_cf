@@ -2,6 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import '../../../assets/stylesheets/transportation_footprint.scss';
 
+const gramsOfCarbonPerGallon = 8887;
+const gramsOfCarbonPerDieselGallon = 10180;
+const gramsToMetricTon = 1000000;
+let userMetricTonFootprint;
 export default class TransportationFootprint extends React.Component {
   static propTypes = {
     first_name: PropTypes.string.isRequired,
@@ -45,10 +49,6 @@ export default class TransportationFootprint extends React.Component {
   calculateFootprint() {
     let { miles_driven_per_year, mpg, diesel } = this.state;
     let vechicleMiles = miles_driven_per_year / mpg
-    const gramsOfCarbonPerGallon = 8887;
-    const gramsOfCarbonPerDieselGallon = 10180;
-    const gramsToMetricTon = 1000000;
-    let userMetricTonFootprint;
     
     if (diesel) {
       userMetricTonFootprint = vechicleMiles * gramsOfCarbonPerDieselGallon / gramsToMetricTon

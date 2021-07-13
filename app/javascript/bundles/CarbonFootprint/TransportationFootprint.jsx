@@ -61,18 +61,6 @@ export default class TransportationFootprint extends React.Component {
     })
   };
 
-  setMilesDriven(event) {
-    this.setState({
-      miles_driven_per_year: event.target.value
-    })
-  };
-
-  setMPG(event){
-    this.setState({
-      mpg: event.target.value
-    })
-  };
-
   setMiles(event) {
     this.setState({
       [event.target.name]: event.target.value

@@ -35,20 +35,20 @@ export default class TransportationFootprint extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState){
-    let {miles_driven_per_year, mpg, diesel} = this.state;
+    let { miles_driven_per_year, mpg, diesel } = this.state;
 
     if (
-        mpg !== prevState.mpg || 
-        miles_driven_per_year !== prevState.miles_driven_per_year ||
-        diesel !== prevState.diesel
-        ) {
+      mpg !== prevState.mpg || 
+      miles_driven_per_year !== prevState.miles_driven_per_year ||
+      diesel !== prevState.diesel
+      ) {
       this.calculateFootprint();
     }
   };
 
   calculateFootprint() {
     let { miles_driven_per_year, mpg, diesel } = this.state;
-    let vechicleMiles = miles_driven_per_year / mpg
+    let vechicleMiles = miles_driven_per_year / mpg;
     
     if (diesel) {
       userMetricTonFootprint = vechicleMiles * gramsOfCarbonPerDieselGallon / gramsToMetricTon

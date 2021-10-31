@@ -24,7 +24,6 @@ class TransportationFootprintController < ApplicationController
     private
 
     def transportation_footprint_params
-        byebug
         params.permit(:user_id, :mpg, :miles_driven_per_year, :metric_ton_carbon_dioxide_output)
     end
 end

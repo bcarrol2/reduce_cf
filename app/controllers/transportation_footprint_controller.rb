@@ -8,7 +8,7 @@ class TransportationFootprintController < ApplicationController
             first_name: @user.first_name,
             last_name: @user.last_name,
             email: @user.email,
-            id: @user.id 
+            user_id: @user.id 
         }
     end
 
@@ -24,6 +24,7 @@ class TransportationFootprintController < ApplicationController
     private
 
     def transportation_footprint_params
+        byebug
         params.permit(:user_id, :mpg, :miles_driven_per_year, :metric_ton_carbon_dioxide_output)
     end
 end

@@ -11,7 +11,7 @@ export default class TransportationFootprint extends React.Component {
     first_name: PropTypes.string.isRequired,
     last_name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired, // these are passed from the Rails view
-    id: PropTypes.number.isRequired
+    user_id: PropTypes.number.isRequired
   };
 
   /**
@@ -24,7 +24,7 @@ export default class TransportationFootprint extends React.Component {
         first_name: this.props.first_name,
         last_name: this.props.last_name,
         email: this.props.email,
-        id: this.props.id,
+        user_id: this.props.user_id,
         miles_driven_per_year: 0,
         mpg: 0,
         metric_ton_carbon_dioxide_output: 0,
@@ -38,7 +38,7 @@ export default class TransportationFootprint extends React.Component {
     let { miles_driven_per_year, mpg, diesel } = this.state;
 
     if (
-      mpg !== prevState.mpg || 
+      mpg !== prevState.mpg ||
       miles_driven_per_year !== prevState.miles_driven_per_year ||
       diesel !== prevState.diesel
       ) {
@@ -69,13 +69,8 @@ export default class TransportationFootprint extends React.Component {
 
   handleSubmit = () => {
     const url = "http://localhost:3000/transportation_footprint"
-    const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, id } = this.state;
-    const body = {
-        id,
-        miles_driven_per_year,
-        mpg,
-        metric_ton_carbon_dioxide_output
-    }
+    const { miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output, user_id } = this.state;
+    const body = { user_id, miles_driven_per_year, mpg, metric_ton_carbon_dioxide_output };
 
     if (miles_driven_per_year === 0 || mpg === 0 || metric_ton_carbon_dioxide_output === 0) {
         alert('You must submit a number')
@@ -149,10 +144,12 @@ export default class TransportationFootprint extends React.Component {
             value={metric_ton_carbon_dioxide_output}
           />
           <br />
-          <label>
+          <div>
+          <label className="transportationFormText">
             Is your vehicle diesel?
-          </label>
           <input type="checkbox" checked={diesel} onClick={this.isDieselVehicle} id="diesel-radio-button" />
+          </label>
+          </div>
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>
         </form>

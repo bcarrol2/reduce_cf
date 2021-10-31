@@ -20,7 +20,7 @@ export default class ShowerUsage extends React.Component {
           last_name: this.props.last_name,
           email: this.props.email,
           user_id: this.props.user_id,
-          time: 0,
+          minutes: 0,
           dailyGallons: 0,
           yearlyGallons: 0,
           gallonsPerMinute: 2.5
@@ -29,14 +29,24 @@ export default class ShowerUsage extends React.Component {
     };
 
     calculateUsage(){
-        let { time, dailyGallons, yearlyGallons, gallonsPerMinute } = this.state;
+        let { minutes, dailyGallons, yearlyGallons, gallonsPerMinute } = this.state;
 
-        this.setState({ time: time, dailyGallons: time * gallonsPerMinute, yearlyGallons: dailyGallons * 365 })
+        this.setState({ minutes: minutes, dailyGallons: minutes * gallonsPerMinute, yearlyGallons: dailyGallons * 365 })
         console.log(this.state, 'latest state')
     };
 
+    setShowerUsage(event){
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     render() {
-        console.log(this.props, 'the props Im givin')
+        let {
+            minutes,
+            yearlyGallons
+        } = this.state;
+
         return(
             <>
             <p>Water Page</p>
@@ -48,6 +58,8 @@ export default class ShowerUsage extends React.Component {
             id="user-inputs"
             type="number"
             name="minutes"
+            value={minutes}
+            onChange={(event) => this.setShowerUsage(event)}
           />
           <br />
           <label htmlFor="" className="transportationFormText">
@@ -57,6 +69,7 @@ export default class ShowerUsage extends React.Component {
             id="user-inputs"
             disabled={true}
             name="yearlyGallons"
+            value={yearlyGallons}
           />
           <br />
           <button className="saveButton" type="submit" value="Submit">Save</button>

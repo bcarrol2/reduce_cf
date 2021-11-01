@@ -28,18 +28,39 @@ export default class ShowerUsage extends React.Component {
   
     };
 
-    calculateUsage(){
+    setShowerUsage(event){
         let { minutes, dailyGallons, yearlyGallons, gallonsPerMinute } = this.state;
+        let userGallons = event.target.value * gallonsPerMinute;
 
-        this.setState({ minutes: minutes, dailyGallons: minutes * gallonsPerMinute, yearlyGallons: dailyGallons * 365 })
-        console.log(this.state, 'latest state')
+        this.setState({
+            minutes: event.target.value,
+            dailyGallons: userGallons,
+            yearlyGallons: userGallons * 365
+        })
     };
 
-    setShowerUsage(event){
-        this.setState({
-            [event.target.name]: event.target.value
+    handleSubmit = () => {
+        const url = "http://localhost:3000/shower_usage"
+        const { minutes, dailyGallons, yearlyGallons, user_id } = this.state;
+        const body = { minutes, dailyGallons, yearlyGallons, user_id };
+    
+        if (minutes === 0 || dailyGallons === 0 || yearlyGallons === 0) {
+            alert('You must submit a number')
+        };
+    
+        fetch(url, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
         })
-    }
+        .then(response => {
+            return response.json();
+        })
+        .then(window.location.href = "/")
+        .catch(error => console.log(error.message));
+    };
 
     render() {
         let {
@@ -50,7 +71,7 @@ export default class ShowerUsage extends React.Component {
         return(
             <>
             <p>Water Page</p>
-            <form className="transportation-footprint-form">
+            <form onSubmit={this.handleSubmit} className="transportation-footprint-form">
           <label htmlFor="" className="transportationFormText">
             About how long are your showers?
           </label>
@@ -68,7 +89,7 @@ export default class ShowerUsage extends React.Component {
           <input
             id="user-inputs"
             disabled={true}
-            name="yearlyGallons"
+            name="yearly_gallons"
             value={yearlyGallons}
           />
           <br />

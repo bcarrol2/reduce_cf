@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "logout-button") %>
-  <%= link_to('Water Usage', shower_usage_path, method: :get, class: "logout-button") %>
+  <%= link_to('Transportation footprint', transportation_footprint_path, method: :get, class: "logout-button") %>
+  <%= link_to('All', user_footprints_path, method: :get, class: "logout-button") %>
 <% else %>
   <%= link_to('Login', new_user_session_path) %>
 <% end %>

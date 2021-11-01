@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import '../../../assets/stylesheets/shower_usage.scss';
 
 export default class ShowerUsage extends React.Component {
     static propTypes = {

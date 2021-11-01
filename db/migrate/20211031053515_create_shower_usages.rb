@@ -4,6 +4,7 @@ class CreateShowerUsages < ActiveRecord::Migration[6.0]
       t.integer :minutes
       t.integer :daily_gallons
       t.integer :yearly_gallons
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

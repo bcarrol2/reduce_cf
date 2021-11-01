@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2021_10_31_053515) do
     t.integer "minutes"
     t.integer "daily_gallons"
     t.integer "yearly_gallons"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_shower_usages_on_user_id"
   end
 
   create_table "transportation_footprints", force: :cascade do |t|
@@ -47,5 +49,6 @@ ActiveRecord::Schema.define(version: 2021_10_31_053515) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "shower_usages", "users"
   add_foreign_key "transportation_footprints", "users"
 end
